@@ -1,0 +1,24 @@
+Options -Indexes
+
+ErrorDocument 404 /latihan/blog/views/error/404.html
+ErrorDocument 401  views/error/401.html 
+ErrorDocument 403 /views/error/403.html 
+ErrorDocument 500 ./views/error/500.html 
+
+RewriteEngine on
+RewriteBase /
+RewriteCond $1 !^(index.php)
+RewriteRule ^kategori/([a-z]+)/?$ kategori.php?sub=$1 [L]
+RewriteRule ^show/tentang/([0-9]+)/?$ viewpost.php?materi=$1 [L]
+RewriteRule ^auth/login/?$ controller/login.php [NC]
+RewriteRule ^auth/logout/?$ controller/logout.php [NC]
+RewriteRule ^dashboard/?$ controller/index.php [NC]
+RewriteRule ^dashboard/materi/?$ controller/post.php [NC]
+RewriteRule ^dashboard/materi/edit/([0-9]+)/?$ controller/edit-post.php?id=$1 [NC]
+RewriteRule ^dashboard/materi/tambah/?$ controller/add-post.php [NC]
+RewriteRule ^dashboard/materi/hapus/([0-9]+)/?$ controller/post.php?delpost=$1 [NC]
+RewriteRule ^dashboard/statistik/?$ controller/statistic.php [NC]
+RewriteRule ^dashboard/pengguna/?$ controller/users.php [NC]
+RewriteRule ^dashboard/pengguna/edit/([0-9]+)/?$ controller/edit-user.php?id=$1 [NC]
+RewriteRule ^dashboard/pengguna/tambah/?$ controller/add-user.php [NC]
+RewriteRule ^dashboard/pengguna/hapus/([0-9]+)/?$ controller/users.php?deluser=$1 [NC]
